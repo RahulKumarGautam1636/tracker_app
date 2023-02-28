@@ -1,0 +1,14 @@
+#home {
+    height: 100vh;
+    max-width: 100vw;
+    z-index: 0;
+
+    & .leaflet-container {
+        height: 100%;
+        z-index: 1;
+
+        & .leaflet-popup-content {
+            font-size: 1.3rem;
+        }
+    }
+}
