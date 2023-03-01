@@ -14,6 +14,7 @@ function Home() {
   const [center, setCenter] = useState([22.51169360, 88.22371109]);
   const [map, setMap] = useState(null);                                     // map has event handlers to move around the map.
   const [path, setPath] = useState([[22.452600714735627, 88.4512710571289], [22.734390263126222, 88.79150390625]]);
+  const [gpsCoords, setGpsCoords] = useState([]);
 
   let points = [
     // [
@@ -81,8 +82,9 @@ function Home() {
     console.log(position.coords);
     let newLocation = [position.coords.latitude, position.coords.longitude];
     // let newLocation = [22.51169360, 88.22371109];
-    addMarker(newLocation);
-    map.flyTo(newLocation, 13);
+    // addMarker(newLocation);
+    setGpsCoords(newLocation);
+    map.flyTo(newLocation, 18);
   }
 
   const catchError = () => null;
@@ -134,7 +136,7 @@ function Home() {
           <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
           <LocationMarker />
           <Polyline pathOptions={fillBlueOptions} positions={path} />
-          {/* <Marker icon={myIcon} position={reCenter}><Popup>Your GPS location.</Popup></Marker> */}
+          { gpsCoords.length > 0 && <Marker icon={myIcon} position={gpsCoords}><Popup>Your GPS location.</Popup></Marker>}
           {/* <SetViewOnClick animateRef={animateRef} /> */}
           {/* {path.map((item, index) => {                                                                                 // Calling this in seperate function doesn't works. may be because of no-reredering state update.
             return <Marker position={item} icon={myIcon} key={index} draggable={true}>
