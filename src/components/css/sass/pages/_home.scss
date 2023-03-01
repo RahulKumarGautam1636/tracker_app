@@ -8,7 +8,16 @@
         z-index: 1;
 
         & .leaflet-popup-content {
-            font-size: 1.3rem;
+            font-size: 13px;
+            margin: 20px 10px 10px 10px;
+
+            & .popup-icons {
+                position: absolute;
+                top: 4px;
+                right: 21px;
+                
+            }
         }
+
     }
 }

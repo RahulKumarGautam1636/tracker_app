@@ -1,16 +1,18 @@
 header {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // background: #ffffff;
-    // z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    // background: #ffffff4a;
+    // backdrop-filter: blur(2px);
+    z-index: 10;
+    pointer-events: none;
     // background-image: url('../../../public/images/pattern-bg.png');
 
 
     & nav {
         overflow-y: hidden;
-        padding: 2.3rem 0;
+        padding: 2rem 0;
         z-index: 1;
 
         // & .navbar-brand {
@@ -19,13 +21,17 @@ header {
         //     color: #707070 !important;            
         // }
 
+        & > div {
+            padding: 0 4vw;
+        }
+
         & #topNav {
             transition: 0.3s ease-in-out;
             pointer-events: all;
             transform: translateX(0);
 
             & li:not(:first-child) {
-                margin-left: 5rem;
+                margin-left: 2rem;
             }
 
             & .nav-link {
@@ -37,14 +43,5 @@ header {
 
         }
 
-        & #menu-icon {
-            content: "";
-            position: absolute;
-            top: .8rem;
-            right: 4%;
-            height: .3rem;
-            width: 2.7rem;
-            background: rgb(202, 31, 31);
-        }
     }
 }

@@ -9,7 +9,7 @@ const compCodeReducer = (compCode=process.env.REACT_APP_E_PHARMA_COMPCODE, actio
   return compCode;
 }
 
-const quickViewModalReducer = (isQuickViewModalOpen=false, action) => {             // Holds Status (open/close) of Login modal.
+const loginModalReducer = (isQuickViewModalOpen=false, action) => {             // Holds Status (open/close) of Login modal.
   if (action.type === 'LOGIN_MODAL') {
     return action.value;
   }
@@ -132,7 +132,7 @@ const toastReducer = (state={status: false, item: {}}, action) => {       // Con
 
 export default combineReducers({
   compCode: compCodeReducer,
-  isQuickViewModalOpen: quickViewModalReducer,
+  loginModalOpen: loginModalReducer,
   bookingModalOpen: bookingModalReducer,
   isLoggedIn: loginStatusReducer,
   userInfo: userInfoReducer,

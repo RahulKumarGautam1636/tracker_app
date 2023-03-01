@@ -208,14 +208,14 @@ export const ModalComponent = ({ isActive, heading, child, handleClose }) => {
 
   return (
     <Modal show={isActive} centered onHide={() => handleClose(false)} backdrop="static" keyboard={false}>
-      <Modal.Header closeButton>
+      {/* <Modal.Header closeButton>
         <Modal.Title>{heading}</Modal.Title>
-      </Modal.Header>
+      </Modal.Header> */}
       <Modal.Body>
+        <i className="icofont-close-circled close-btn" onClick={() => handleClose(false)}></i>
         {child}
       </Modal.Body>
-      <Modal.Footer>
-      </Modal.Footer>
+      {/* <Modal.Footer></Modal.Footer> */}
     </Modal>
   )
 }

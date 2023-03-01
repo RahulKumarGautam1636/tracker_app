@@ -6,6 +6,7 @@ import L from 'leaflet';
 // import icon from './pin.png'; 
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import BottomNav from './bottomNav';
 
 
 function Home() {
@@ -15,14 +16,14 @@ function Home() {
   const [path, setPath] = useState([[22.452600714735627, 88.4512710571289], [22.734390263126222, 88.79150390625]]);
 
   let points = [
-    [
-        22.564442522733668,
-        88.35943222045898
-    ],
-    [
-        23.06330690906648,
-        88.04168701171876
-    ],
+    // [
+    //     22.564442522733668,
+    //     88.35943222045898
+    // ],
+    // [
+    //     23.06330690906648,
+    //     88.04168701171876
+    // ],
     [
         21.718679805703154,
         88.79699707031251
@@ -49,17 +50,16 @@ function Home() {
         addMarker(e.latlng);
     }
     })
-
-    const removeMarker = (coords) => {
-        let filteredPath = path.filter(i => i !== coords);
-        setPath(filteredPath);
-    }
   
     return path.map((pos, index) => {
         return (
             <Marker position={pos} icon={myIcon} key={index}>
                 <Popup>
-                    <button onClick={() => {removeMarker(pos)}}className='btn btn-sm btn-primary'>Delete</button>
+                  <div className='popup-icons'>
+                    <i onClick={() => {removeMarker(pos)}} className='bx bx-trash' style={{color: 'red'}}></i>
+                    <i onClick={() => {flyToLocation(pos)}} className='bx bx-search' style={{marginLeft: '.5rem', color: '#1fb0c3'}}></i>
+                  </div>
+                    Popup description here
                 </Popup>
             </Marker>
         )
@@ -106,12 +106,22 @@ function Home() {
     setPath([...path, coords ]);
   }
 
+  const removeMarker = (coords) => {
+      let filteredPath = path.filter(i => i !== coords);
+      setPath(filteredPath);
+  }
+
+  const flyToLocation = (coord) => {
+    setPath([...path, coord]);
+    map.flyTo(coord, 13);
+  }
+
 
 
   return (
     <>
       <div id='home'>        
-        <MapContainer center={center} zoom={13} ref={setMap} onClick={addMarker}>
+        <MapContainer center={center} zoom={13} ref={setMap} onClick={addMarker} zoomControl={false}>
           <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
           <LocationMarker />
           <Polyline pathOptions={fillBlueOptions} positions={path} />
@@ -126,9 +136,10 @@ function Home() {
           })} */}
         </MapContainer>
       </div>
-      <div className="reCenter_container" onClick={getLocation}>
+      <div className="reCenter_container d-none d-md-grid" onClick={() => flyToLocation([51.505, -0.09])}>
           <img id="reCenter_button" src="images/icon-location.svg" alt="Recenter"/>
       </div>
+      <BottomNav handleGpsLocation={getLocation}/>
     </>
   )
 }

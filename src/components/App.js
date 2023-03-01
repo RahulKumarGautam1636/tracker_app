@@ -1,5 +1,7 @@
 import { HashRouter, Route } from 'react-router-dom';
 import './css/style.css';
+import './css/loginModalStyle.css';
+import './css/icofont/icofont.css';
 
 import Header from './header';
 import Home from './home2';
@@ -22,7 +24,7 @@ function App({ isLoading }) {
       <HashRouter>
         {isLoading && <div className='spinner-container'><GlobalLoader/></div>}
         <Header/>
-        <BottomNav/>
+        {/* <BottomNav/> */}
         <ScrollToTop/>
         <div>
           <Route path='/' exact component={Home}/>

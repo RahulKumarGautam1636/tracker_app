@@ -19,7 +19,7 @@ export const compInfoAction = (item) => {
 //   }
 // }
 
-export const quickViewModalAction = (status) => {
+export const loginModalAction = (status) => {
   return {
     type: "LOGIN_MODAL",
     value: status
