@@ -30,7 +30,7 @@ function Home() {
     ]
 ]
 
-  console.log(map);
+  // console.log(map);
   // const position = [22.51169360, 88.22371109];
   // const position = [51.505, -0.09];
 
@@ -78,15 +78,24 @@ function Home() {
   }
 
   const reCenterPosition = (position) => {
+    console.log(position.coords);
     let newLocation = [position.coords.latitude, position.coords.longitude];
     // let newLocation = [22.51169360, 88.22371109];
     addMarker(newLocation);
     map.flyTo(newLocation, 13);
   }
 
+  const catchError = () => null;
+
+  var positionOptions = {
+    timeout : Infinity,
+    maximumAge : 0,
+    enableHighAccuracy : true
+  }
+
   function getLocation() {                // Get your Geolocation coordinates.
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(reCenterPosition);
+      navigator.geolocation.watchPosition(reCenterPosition, catchError, positionOptions);
     } else {
       console.log("Your browser doesn't supports GeoLocation.");
     }
