@@ -1,0 +1,79 @@
+.sidePanel {
+    height: 100%;
+
+    & .top-section {
+        height: 30%;
+        // background-image: url(img/circles.png);
+        // background: linear-gradient(45deg, rgba(86, 58, 250, 0.7) 0%, rgba(116, 15, 214, 0.7) 100%), url("img/circles.png") center center no-repeat;
+        // background: linear-gradient(45deg, rgba(86, 58, 250, 0.9) 0%, rgba(116, 15, 214, 0.9) 100%), url("img/circles.png") center center no-repeat;
+        // background: linear-gradient(45deg, rgba(251, 101, 152, .7) 0%, rgba(241, 109, 213, .8) 100%), url('img/circles.png') center center no-repeat;
+        // background: linear-gradient(45deg, rgba(251, 101, 101, .7) 0%, rgba(255, 73, 216, .8) 100%), url('img/circles.png') center center no-repeat;
+        background: linear-gradient(45deg, rgba(110, 235, 187, .9) 0%, rgba(73, 230, 255, .9) 100%), url('img/circles.png') center center no-repeat;
+
+        // background-color: #FFDEE9;
+        // background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+
+
+        background-size: 111%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & .bottom-section {
+        height: -webkit-fill-available;
+        padding: 3rem 1rem;
+        border-top-left-radius: 4rem;
+        border-top-right-radius: 4rem;
+        margin-top: -4.2rem;
+        background: #fbfbfbfa;
+
+        & ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3rem;
+            padding: 0;
+
+            & li {
+                padding: 2.2rem 2.5rem;
+                width: 80%;
+                background: white;
+                font-size: 1.9rem;
+                border-radius: 5px;
+                box-shadow: $box-shadow-very-light;
+                position: relative;
+                text-transform: capitalize;
+
+                &:not(last-child) {
+                    margin-bottom: 2rem;
+                }
+
+                & .bullet-point {
+                    margin-right: 1rem;
+                    padding: 0.8rem;
+                    background: #ff42b4d9;
+                    border-radius: 50%;
+                    box-shadow: $box-shadow-very-light;
+                    color: white;
+                }
+
+                & .chevron {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translate(-50%, -50%);
+                    padding: 0.2rem;
+                    border-radius: 50%;
+                    background: #f7f7f7;
+                    box-shadow: $box-shadow-very-light;
+                    font-size: 20px;
+                    color: gray;
+                }
+
+
+            }
+        }
+    }
+}

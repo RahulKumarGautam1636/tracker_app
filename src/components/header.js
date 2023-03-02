@@ -63,25 +63,25 @@ export default connect(mapStateToPropsTwo, {loginModalAction})(Header);
 const loginModal = () => {
 
     return (
-        <div class="outer-box">
+        <div className="outer-box">
             <form id="loginForm">
                 <h1 style={{fontSize: '25px', marginBottom: '50px', color: '#45f3ff'}}>Sign in</h1>
                 <div style={{marginBottom: '45px'}}>
-                <div class="inputBox position-relative">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required=""/>
+                <div className="inputBox position-relative">
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required=""/>
                     <span>E-mail</span>
                     <i></i>
                 </div>
                 </div>
                 <div style={{marginBottom: '20px'}}>
-                <div class="inputBox position-relative">
-                    <input type="password" class="form-control" id="exampleInputPassword1" required=""/>
+                <div className="inputBox position-relative">
+                    <input type="password" className="form-control" id="exampleInputPassword1" required=""/>
                     <span>Password</span>
                     <i></i>
                 </div>
                 </div>
-                <a class="text-white text-decoration-none mb-3" style={{fontSize: '14px'}}>Forgot Password !</a>
-                <button type="submit" class="btn d-block ms-auto submitBtn">Submit</button>
+                <a className="text-white text-decoration-none mb-3" style={{fontSize: '14px'}}>Forgot Password !</a>
+                <button type="submit" className="btn d-block ms-auto submitBtn">Submit</button>
             </form>
         </div>
     )

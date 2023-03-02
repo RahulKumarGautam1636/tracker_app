@@ -13,6 +13,9 @@ import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
 import axios from 'axios';
 
+import Button from 'react-bootstrap/Button';                      
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 const useScript = url => {
   useEffect(() => {
     const script = document.createElement('script');
@@ -204,7 +207,7 @@ export const useDocumentTitle = (title, prevailOnUnmount = false) => {      // T
 }
 
 
-export const ModalComponent = ({ isActive, heading, child, handleClose }) => {
+export const ModalComponent = ({ isActive, child, handleClose }) => {
 
   return (
     <Modal show={isActive} centered onHide={() => handleClose(false)} backdrop="static" keyboard={false}>
@@ -371,53 +374,21 @@ const mapStateToBreadCrumb = (state) => {
 export const ConnectedBreadCrumb = connect(mapStateToBreadCrumb, {breadCrumbAction})(BreadCrumb);
 
 
-export const products = [
-  {
-      id: 1,
-      off: 48,
-      name: 'BD Venflon I.V. Cannula 20G',
-      oldPrice: 194,
-      newPrice: 100,
-      img: 'https://erp.gsterpsoft.com/Content/ImageMaster/220707175641_1.jpeg'
-  },
-  {
-      id: 2,
-      off: 51,
-      name: 'Salter Nasal Oxygen Cannula',
-      oldPrice: 100,
-      newPrice: 59,
-      img: 'https://erp.gsterpsoft.com/Content/ImageMaster/220707175406_1.webp'
-  },
-  {
-      id: 3,
-      off: 40,
-      name: '3M Micropore 153OS-3, Inch X 5.5 Yard',
-      oldPrice: 168,
-      newPrice: 100,
-      img: 'https://erp.gsterpsoft.com/Content/ImageMaster/220707175020_1.jpg'
-  },
-  {
-      id: 4,
-      off: 27,
-      name: 'Hansaplast Soft Fixation Tape 1.25cm X 9.14m',
-      oldPrice: 41.75,
-      newPrice: 30.6,
-      img: 'https://erp.gsterpsoft.com/Content/ImageMaster/220707174756_1.jpg'
-  },
-  {
-      id: 5,
-      off: 25,
-      name: '1Mile Plastic Glove Universal 500Pic',
-      oldPrice: 400,
-      newPrice: 299,
-      img: 'https://erp.gsterpsoft.com/Content/ImageMaster/220707174323_1.jpg'
-  },
-  {
-      id: 6,
-      off: 48,
-      name: 'BD Venflon I.V. Cannula 20G',
-      oldPrice: 194,
-      newPrice: 100,
-      img: 'https://erp.gsterpsoft.com/Content/ImageMaster/220707175641_1.jpeg'
-  }
-]
+export const OffcanvasComponent = ({ isActive, child, handleClose }) => {
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Offcanvas show={isActive} onHide={() => handleClose(false)}>
+        {/* <Offcanvas.Header closeButton><Offcanvas.Title>Offcanvas</Offcanvas.Title></Offcanvas.Header> */}
+        <Offcanvas.Body>
+          {child}
+          <i className="icofont-close-circled close-btn text-dark" onClick={() => handleClose(false)}></i>
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  );
+}
