@@ -20,6 +20,8 @@ function Home() {
   const [nameModal, setNameModal] = useState(false);
   const [name, setName] = useState({name: '', coords: []});
   const [menuActive, setMenuActive] = useState(false);
+  const [popActive, setPopupActive] = useState(false);
+  const [popContent, setPopupContent] = useState({name: '', coords: []});
 
   let points = [
     // [
@@ -40,11 +42,7 @@ function Home() {
   // const position = [22.51169360, 88.22371109];
   // const position = [51.505, -0.09];
 
-  const polyline = [               // Draw line connection the coords.
-    [51.505, -0.09],
-    [51.51, -0.1],
-    [51.51, -0.12],
-  ]
+  const polyline = path.map(item => item.coords);
 
 
   const fillBlueOptions = { fillColor: 'blue' };
@@ -57,17 +55,26 @@ function Home() {
         setNameModal(true);
     }
     })
+
+    const handlePopup = (pos) => {
+      setPopupContent({name: pos.name, coords: pos.coords});
+      if (JSON.stringify(pos.coords) === JSON.stringify(popContent.coords)) {
+        setPopupActive(!popActive);
+      } else {
+        setPopupActive(true);
+      }
+    }
   
     return path.map((pos, index) => {
         return (
-            <Marker position={pos.coords} icon={myIcon} key={index}>
-                <Popup>
+            <Marker position={pos.coords} icon={myIcon} key={index} eventHandlers={{click: () => handlePopup(pos)}}>
+                {/* <Popup>
                   <div className='popup-icons'>
                     <i onClick={() => {flyToLocation(pos.coords)}} className='bx bx-search' style={{color: '#1fb0c3'}}></i>
                     <i onClick={() => {removeMarker(pos.coords)}} className='bx bx-trash' style={{marginLeft: '.5rem', color: 'red'}}></i>
                   </div>
                     {pos.name}
-                </Popup>
+                </Popup> */}
             </Marker>
         )
     })
@@ -125,6 +132,8 @@ function Home() {
   const removeMarker = (coords) => {
       let filteredPath = path.filter(i => i.coords !== coords);
       setPath(filteredPath);
+      setPopupActive(false);
+      setPopupContent({name: '', coords: []});
   }
 
   const flyToLocation = (coord) => {
@@ -156,15 +165,23 @@ function Home() {
     )
   }
 
-
-
   return (
     <>
-      <div id='home'>        
+      <div id='home'>
+
+         <div className='custom-popup'  style={{right: popActive ? '3%' : '-70%'}}>
+           <div className='popup-icons text-end'>
+             <i className='bx bx-search' onClick={() => {flyToLocation(popContent.coords)}} style={{color: '#1fb0c3'}}></i>
+             <i  className='bx bx-trash' onClick={() => removeMarker(popContent.coords)} style={{marginLeft: '0.5rem', color: 'red'}}></i>
+           </div>
+           <p className='fw-bold mb-0' style={{fontSize: '16px'}}>{popContent.name}</p>
+           {/* <div>lat: {popContent.coords.lat}</div>
+           <div>lng: {popContent.coords.lng}</div> */}
+         </div>
         <MapContainer center={center} zoom={13} ref={setMap} onClick={addMarker} zoomControl={false}>
           <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
           <LocationMarker />
-          {/* <Polyline pathOptions={fillBlueOptions} positions={path} /> */}
+          <Polyline pathOptions={fillBlueOptions} positions={polyline} />
           { gpsCoords.length > 0 && <Marker icon={myIcon} position={gpsCoords}><Popup>Your GPS location.</Popup></Marker>}
           {/* <SetViewOnClick animateRef={animateRef} /> */}
           {/* {path.map((item, index) => {                                                                                 // Calling this in seperate function doesn't works. may be because of no-reredering state update.
