@@ -1,7 +1,6 @@
 // // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-export const sidePanel = ({ path, map, handleClose }) => {
-    console.log(path);                                                                                                                                      
+export const sidePanel = ({ path, map, handleClose }) => {                                                                                                                                
     return (                                                                            
         <div className='sidePanel'>
             <div className='top-section'>
