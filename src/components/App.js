@@ -26,7 +26,7 @@ function App({ isLoading }) {
         <Header/>
         {/* <BottomNav/> */}
         <ScrollToTop/>
-        <div className='position-relative overflow-hidden'>
+        <div>
           <Route path='/' exact component={Home}/>
           {/* <Route path='/productPage/:id' component={ProductPage}/>
           <Route path='/franchisee' component={Franchisee}/>
