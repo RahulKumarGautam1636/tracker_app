@@ -91,10 +91,15 @@ function Home() {
     return null
   }
   
-  // window.gpsInitialised = false;
+  var gpsInitialised = false;
   const reCenterPosition = (position) => {
     let newLocation = [position.coords.latitude, position.coords.longitude];
-    map.flyTo(newLocation, 18);
+
+    if (gpsInitialised === false) {       // reCenter is somehow cannot realtime value of state hence.
+      map.flyTo(newLocation, 18);         // using gpsInitialisez to keep track of gps initialization to handle map.flyto.
+      gpsInitialised = true;
+    }
+    console.log(gpsCoords);
     setGpsCoords(newLocation);
   }
   
@@ -108,7 +113,7 @@ function Home() {
 
   function getLocation() {                // Get your Geolocation coordinates.
     if (gpsCoords.length > 1) {
-      map.flyTo(gpsCoords, 13);           // only recenter to gps location if gps is already initiazed and working.
+      map.flyTo(gpsCoords, map.getZoom());           // only recenter to gps location if gps is already initiazed and working.
       setPopupContent({name: '', coords: []});
       setPopupActive(false);
       return;
