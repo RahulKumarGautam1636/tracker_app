@@ -90,16 +90,14 @@ function Home() {
   
     return null
   }
-
+  
+  // window.gpsInitialised = false;
   const reCenterPosition = (position) => {
     let newLocation = [position.coords.latitude, position.coords.longitude];
-    console.log(gpsCoords);
-    if (gpsCoords.length === 0) map.flyTo(newLocation, 18);
-    // let newLocation = [22.51169360, 88.22371109];
-    // addMarker(newLocation);
+    map.flyTo(newLocation, 18);
     setGpsCoords(newLocation);
   }
-
+  
   const catchError = () => null;
 
   var positionOptions = {
@@ -109,7 +107,6 @@ function Home() {
   }
 
   function getLocation() {                // Get your Geolocation coordinates.
-    console.log(gpsCoords.length);
     if (gpsCoords.length > 1) {
       map.flyTo(gpsCoords, 13);           // only recenter to gps location if gps is already initiazed and working.
       setPopupContent({name: '', coords: []});
