@@ -1,0 +1,140 @@
+#logoImg {
+    max-height: 7rem;
+}
+
+.link-1 {
+    color: #707070;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.nav-link i {
+    font-size: 3rem;
+    padding: 1.5rem 1.65rem;
+    background: white;
+    border-radius: 50%;
+    color: #1fb0c3;
+    box-shadow: $box-shadow-light;
+}
+
+.btn-1 {
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    padding: 0.7rem 3rem;
+    border-radius: 0.5rem;
+    transition: 0.5s;
+    color: #707070;
+    /* background: linear-gradient(45deg, #5846f9 0%, #7b27d8 100%); */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 0.2rem solid #cfcfcf;
+    background: white;
+
+    &:hover {
+        color: white;
+        border: .2rem solid transparent;
+
+        &::before {
+            width: 100%;
+        }
+    }
+
+    &::before {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        background: linear-gradient(42deg, #ff2a2a, #ec4bff);
+        transition: 0.5s ease-in-out;
+    }
+}
+
+.reCenter_button {
+    position: fixed;
+    bottom: 6rem;
+    right: 4vw;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 3rem;
+    padding: 1.5rem 1.65rem;
+    background: #2f69fa99;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 105, .15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+    @media only screen and (max-width: $bp-medium) {
+        bottom: 4rem;
+    }
+
+}
+
+.bottomNav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    z-index: 10000;
+
+    & ul {
+        list-style: none;
+        font-size: 3rem;
+        background: white;
+        margin-bottom: 0;
+        margin-top: 1px;
+
+        & i {
+            color: #1fb0c3;
+        }
+
+        & li:nth-child(3) i {
+            // padding: 1.5rem;
+            // background: #d2faff;
+            // border-radius: 50%;
+            // transform: translateY(-23px);
+            // outline: 4px solid;
+
+            padding: 1.5rem;
+            background: #2cc3d7;
+            border-radius: 50%;
+            transform: translateY(-21px);
+            outline: 6px solid white;
+            outline-offset: 0;
+            color: white;
+        }
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-content {
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    .modal-body {
+        padding: 0;
+    }
+}
+
+.offcanvas.offcanvas-start {
+    border-right: none;
+
+    & .offcanvas-body {
+        overflow: hidden;
+        padding: 0;
+    }
+}

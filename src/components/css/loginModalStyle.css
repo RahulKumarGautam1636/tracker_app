@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap);
+
+
+#loginForm {
+  position: relative;
+  background: #194448;
+  border-radius: 10px;
+  z-index: 10;
+  padding: 30px;
+}
+#loginForm span {
+    color: white;
+    position: absolute;
+    top: -4px;
+    left: 0;
+    transition: transform 0.3s linear;
+    pointer-events: none;
+    font-size: 19px;
+}
+.outer-box {
+  background: #00ffff36;
+  padding: 3px;
+  border-radius: 12px;
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+}
+.outer-box::before, .outer-box::after {
+  position: absolute;
+  content: '';
+  top: -100%;
+  left: -50%;
+  height: 150%;
+  width: 100%;
+  background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+  transition: 3s linear;
+  transform-origin: bottom right;
+  z-index: 1;
+  animation: rotateItem 6s linear infinite;
+}
+.outer-box::after {
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(180deg, transparent, #45f3ff, #45f3ff);
+  transform-origin: top left;
+}
+@keyframes rotateItem {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#loginForm input {
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    z-index: 0;
+    padding: 10px 10px 7px 12px;
+    font-size: 15px;
+}
+.inputBox i {
+  z-index: -1;
+  pointer-events: none;
+}
+.inputBox i::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: #45f3ff;
+    transition: 0.3s linear;
+    z-index: -1;
+    border-radius: 4px;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span
+ {
+  transform: scale(0.8) translate(-13%, -118%);
+}
+.inputBox input:valid ~ i::before,
+.inputBox input:focus ~ i::before
+ {
+  height: 100%;
+}
+.submitBtn {
+    background: transparent;
+    border: 2px solid #45f3ff !important;
+    font-weight: bold !important;
+    min-width: 150px;
+    color: #45f3ff !important;
+    font-size: 17.5px;
+    margin-top: 12px;
+}
+.submitBtn:hover {
+  background: #45f3ff !important;
+  color: #104348 !important;
+}
+

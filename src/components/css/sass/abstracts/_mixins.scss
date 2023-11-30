@@ -1,0 +1,50 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absoluteCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+// MEDIA QUERY MANAGER
+
+/*
+0 - 600px:  Phone
+600 - 900px Tablets Landscape
+900 - 1200px Tablet Landscape
+1800 - Desktops
+*/
+
+/*
+$breakpoint argument choice:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) { @content };             // 600px = 600px/16px
+    }
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) { @content };      // 900px
+    }
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) { @content };      // 1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) { @content };       // using min-width here to target range >= 1800px
+    }
+}
+
+
+
